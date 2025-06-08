@@ -7,5 +7,5 @@ rsync -avPz /user_data/.tmp /test
 umount /test
 mv /user_data /user_data_sda
 mv /test /user_data
-cat /u/desh/scripts/fstab_sda >> /etc/fstab
+cat /u/kbm/scripts/fstab_sda >> /etc/fstab
 mount -a 
