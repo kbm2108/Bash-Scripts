@@ -2,7 +2,7 @@
 
 for i in `awk ' { print $1 } ' quota_exceed_userlist` 
 do
-mail -b desh -s "Please delete some data from your login" $i << EOF
+mail -b kbm -s "Please delete some data from your login" $i << EOF
 Hi `dnwho $i -e | grep name | cut -d ":" -f2 | sed -e 's/^[ \t]*//'`,
 
 Please delete some data from your login so as to avoid further login error as your disk usage is almost full.
@@ -11,14 +11,3 @@ Following is the breakdown of your usage
 
 `sudo du -sh /u/$i/* | sort -hr | grep -v ^0` 
 
-
-For more information on how to lower your quota please read these notes:
-http://dnet.dneg.com/display/TECH/Home+Quota
-
-Thanks,
-Deepak
-EOF
-done
-
-#`sudo du -sh /hosts/chnnetapp1/u/$i/* | sort -hr | grep -v ^0`
-#`sudo dnquota --volume=/vol/u -r muts`          \\Have to run this on chnbatch1
