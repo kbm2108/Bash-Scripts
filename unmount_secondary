@@ -1,0 +1,13 @@
+mkdir -p /test
+chmod 777 /test
+rsync -avPz /user_data/* /test
+rsync -avPz /user_data/.tmp /test
+umount -lf /user_data
+echo "unmounted user_data (if you see any error by now, please stop the script and contact me"
+sed -i '$d' /etc/fstab
+echo "removed slice from /etc/fstab, reconfirm later"
+rsync -avPz /test/* /user_data
+rsync -avPz /test/.tmp /user_data
+echo "copied old data"
+rm -rvf /test
+echo "removed temp files"

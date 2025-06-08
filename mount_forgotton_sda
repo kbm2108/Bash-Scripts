@@ -1,0 +1,11 @@
+mkfs.xfs -f /dev/sda
+mkdir -p /test
+chmod 777 /test
+mount /dev/sda /test
+rsync -avPz /user_data/ /test
+rsync -avPz /user_data/.tmp /test
+umount /test
+mv /user_data /user_data_sda
+mv /test /user_data
+cat /u/desh/scripts/fstab_sda >> /etc/fstab
+mount -a 

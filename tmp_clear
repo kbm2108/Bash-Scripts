@@ -1,0 +1,12 @@
+#!/bin/bash
+rm -rvf /user_data/.tmp/publish_temp*
+rm -rvf /user_data/.tmp/environment_*
+rm -rvf /user_data/.tmp/tasklauncher_temp_*
+rm -rvf /user_data/.tmp/tmp*
+rm -rvf /user_data/.tmp/ogs*
+rm -rvf /user_data/.tmp/Nuke/ViewerCache
+rm -rvf /user_data/.tmp/Nuke/tilecache
+rm -rvf /user_data/.tmp/clip/cache/*
+rm -rvf /user_data/.tmp/hfs*
+rm -rvf /user_data/.tmp/*.tmp
+rm -rvf /user_data/.tmp/MoTemp/*

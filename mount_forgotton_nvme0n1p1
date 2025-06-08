@@ -1,0 +1,11 @@
+mkfs.xfs -f /dev/nvme0n1p1
+mkdir -p /test
+chmod 777 /test
+mount /dev/nvme0n1p1 /test
+rsync -avPz /user_data/ /test
+rsync -avPz /user_data/. /test
+umount /test
+mv /user_data /user_data_sda
+mv /test /user_data
+cat /u/desh/scripts/nvme0n1p1fstab >> /etc/fstab
+mount -a
