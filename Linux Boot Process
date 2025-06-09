@@ -1,0 +1,30 @@
+                                                ************************************************************
+                                                                Linux Boot Process
+                                                ************************************************************
+
+Boot process is all the process which happen when you turn ON the system till you get the login screen
+
+1) BIOS
+BIOS stands for basic input output system. It is located on the CMOS chip of the motherboard. The BIOS is loaded by the OEM (original equipment manufacturer) on the CMOS chip. Bios starts checking the hardware components if they are working properly. First thing that is checked is input/output. If any of the components is not working the system wont boot.
+
+2) Master Boot Record (MBR) 
+The BIOS send interrupt signals to all the components to check if they are working properly. On the 14th or 15th interrupt signal it will look for the Master Boot Record (MBR). It is located on the 1st sector of the disk. 
+The size of MBR is 512 bytes. Its divided into 3 parts:
+i) Primary Boot Loader (446 bytes)
+ii) Partition table size (64 bytes)
+iii) MBR validation checks (last 2 bytes)
+The information will look like : INDEX | LENGTH | SIZE
+
+3) GRUB (GRUB2)
+Once the MBR is located , it checks where is the bootloader. Bootloader's job is to locate the kernel and initramfs (initial ram filesystem)and load it into memory (RAM). 
+The Bootloader used in linux system right now is grub2. 
+Primary purpose of initramfs is to mount the kernel to root file system (/). It locates the devices, load the drivers and checks for any errors in root file system (/)
+
+4) Kernel
+Once kernel is mounted on root file system , initramfs is removed. It starts the first process (init/systemd) 
+
+5) SystemD/Init
+The systemD/Init process will mount the remaining file systems , start all background services and run all startup scripts (units) under /etc/systemd/system/*.service
+
+6) Runlevel/Targets:
+System will check the default runlevl/target and start the system based on the runlevel/target specified
